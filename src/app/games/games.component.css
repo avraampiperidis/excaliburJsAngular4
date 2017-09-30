@@ -1,0 +1,9 @@
+.example-card {
+  width: 185px;
+}
+
+.example-header-image {
+  background-image: url('/assets/pong.png');
+  background-size: cover;
+}
+

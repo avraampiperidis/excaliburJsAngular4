@@ -1,0 +1,31 @@
+body {
+  margin: 0%;
+}
+
+.container {
+  display: flex;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  min-height: 10px;
+  flex-direction: column;
+}
+
+.sidenav-container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.sidenav-md {
+  padding: 20px;
+}
+
+.side-nav-button {
+  display: flex;
+  height: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: transparent;
+}

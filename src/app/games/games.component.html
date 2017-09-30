@@ -1,0 +1,24 @@
+
+<md-grid-list cols="3" rowHeight="1:1">
+  <md-grid-tile *ngFor="let game of myGames">
+    <md-card class="example-card">
+      <md-card-header>
+        <div md-card-avatar class="example-header-image"></div>
+        <md-card-title>{{game.title}}</md-card-title>
+        <md-card-subtitle>{{game.id}}</md-card-subtitle>
+      </md-card-header>
+      <img md-card-image src="{{game.icon}}" alt="Photo of a pong game">
+      <md-card-content>
+        <p>
+          {{game.description}}
+        </p>
+      </md-card-content>
+      <md-card-actions>
+        <button md-button [routerLink]="[game.url]">PLAY</button>
+      </md-card-actions>
+    </md-card>
+
+  </md-grid-tile>
+</md-grid-list>
+
+

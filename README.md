@@ -1,7 +1,7 @@
 
 # Game
 
-## Development server -- live demo http://52.59.125.11
+## Development server -- <a href="http://example.com" target="_blank">live demo</a>
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 

@@ -3,13 +3,12 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdButtonModule, MdCheckboxModule , MdCardModule , MdGridListModule } from '@angular/material';
+import {MdButtonModule, MdCheckboxModule , MdCardModule , MdGridListModule, MdSnackBarModule } from '@angular/material';
 
 //main components
 import { AppComponent } from './app.component';
 import { PongComponent } from "./games/pong/pong.component";
 import { GamesComponent } from "./games/games.component";
-
 
 const routes: Routes = [
   {
@@ -37,7 +36,7 @@ const routes: Routes = [
      MdButtonModule,
     MdCheckboxModule,
     MdCardModule,
-    MdGridListModule
+    MdGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

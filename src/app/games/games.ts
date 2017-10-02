@@ -6,6 +6,7 @@ export const  games = [
         description:'This is a sample brick breaking game.',
         icon:'/assets/pong.png',
         iconAlt:'/assets/pong.png',
+        iconSmall:'/assets/pong.png',
         url:'/pong',
         extra:'',
         id:1
@@ -15,7 +16,8 @@ export const  games = [
         description:'Game Description goes here',
         icon:'/assets/pong.png',
         iconAlt:'/assets/pong.png',
-        url:'/',
+        iconSmall:'/assets/empty.png',
+        url:'',
         extra:'',
         id:2
     },
@@ -24,7 +26,8 @@ export const  games = [
         description:'Game Description goes here',
         icon:'/assets/pong.png',
         iconAlt:'/assets/pong.png',
-        url:'/',
+        iconSmall:'/assets/empty.png',
+        url:'',
         extra:'',
         id:3
     },
@@ -33,7 +36,8 @@ export const  games = [
         description:'Game Description goes here',
         icon:'/assets/pong.png',
         iconAlt:'/assets/pong.png',
-        url:'/',
+        iconSmall:'/assets/empty.png',
+        url:'',
         extra:'',
         id:4
     },
@@ -42,7 +46,8 @@ export const  games = [
         description:'Game Description goes here',
         icon:'/assets/pong.png',
         iconAlt:'/assets/pong.png',
-        url:'/',
+        iconSmall:'/assets/empty.png',
+        url:'',
         extra:'',
         id:5
     },
@@ -51,7 +56,8 @@ export const  games = [
         description:'Game Description goes here',
         icon:'/assets/pong.png',
         iconAlt:'/assets/pong.png',
-        url:'/',
+        iconSmall:'/assets/empty.png',
+        url:'',
         extra:'',
         id:6
     }

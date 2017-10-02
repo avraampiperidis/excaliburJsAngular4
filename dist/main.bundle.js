@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n     <router-outlet></router-outlet>\n\n"
+module.exports = "\n     <router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -144,7 +144,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_5__angular_material__["a" /* MdButtonModule */],
             __WEBPACK_IMPORTED_MODULE_5__angular_material__["c" /* MdCheckboxModule */],
             __WEBPACK_IMPORTED_MODULE_5__angular_material__["b" /* MdCardModule */],
-            __WEBPACK_IMPORTED_MODULE_5__angular_material__["d" /* MdGridListModule */]
+            __WEBPACK_IMPORTED_MODULE_5__angular_material__["d" /* MdGridListModule */],
         ],
         providers: [],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]],
@@ -164,7 +164,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".example-card {\r\n  width: 185px;\r\n}\r\n\r\n.example-header-image {\r\n  background-image: url('/assets/pong.png');\r\n  background-size: cover;\r\n}\r\n\r\n", ""]);
+exports.push([module.i, ".example-card {\r\n  width: 185px;\r\n}\r\n\r\n.example-header-image {\r\n  background-size: cover;\r\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -177,7 +177,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/games/games.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<md-grid-list cols=\"3\" rowHeight=\"1:1\">\r\n  <md-grid-tile *ngFor=\"let game of myGames\">\r\n    <md-card class=\"example-card\">\r\n      <md-card-header>\r\n        <div md-card-avatar class=\"example-header-image\"></div>\r\n        <md-card-title>{{game.title}}</md-card-title>\r\n        <md-card-subtitle>{{game.id}}</md-card-subtitle>\r\n      </md-card-header>\r\n      <img md-card-image src=\"{{game.icon}}\" alt=\"Photo of a pong game\">\r\n      <md-card-content>\r\n        <p>\r\n          {{game.description}}\r\n        </p>\r\n      </md-card-content>\r\n      <md-card-actions>\r\n        <button md-button [routerLink]=\"[game.url]\">PLAY</button>\r\n      </md-card-actions>\r\n    </md-card>\r\n\r\n  </md-grid-tile>\r\n</md-grid-list>\r\n\r\n\r\n"
+module.exports = "<div>\r\n<md-grid-list cols=\"3\" rowHeight=\"1:1\">\r\n\r\n  <md-grid-tile *ngFor=\"let game of myGames\">\r\n    <md-card class=\"example-card\">\r\n      <md-card-header>\r\n        <div md-card-avatar class=\"example-header-image\" [ngStyle]=\"{'background-image': 'url(' + game.iconSmall + ')'}\"></div>\r\n        <md-card-title>{{game.title}}</md-card-title>\r\n        <md-card-subtitle>{{game.id}}</md-card-subtitle>\r\n      </md-card-header>\r\n      <img md-card-image src=\"{{game.icon}}\" alt=\"Photo of a pong game\">\r\n      <md-card-content>\r\n        <p>\r\n          {{game.description}}\r\n        </p>\r\n      </md-card-content>\r\n      <md-card-actions>\r\n        <button md-button (click)=\"loadGame(game.url)\">PLAY</button>\r\n      </md-card-actions>\r\n    </md-card>\r\n\r\n  </md-grid-tile>\r\n</md-grid-list>\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -205,8 +205,14 @@ var GamesComponent = (function () {
     function GamesComponent(router) {
         this.router = router;
         this.myGames = __WEBPACK_IMPORTED_MODULE_2__games__["a" /* games */];
+        this.msg = [];
     }
     GamesComponent.prototype.ngOnInit = function () {
+    };
+    GamesComponent.prototype.loadGame = function (url) {
+        if (url) {
+            this.router.navigate([url]);
+        }
     };
     return GamesComponent;
 }());
@@ -235,6 +241,7 @@ var games = [
         description: 'This is a sample brick breaking game.',
         icon: '/assets/pong.png',
         iconAlt: '/assets/pong.png',
+        iconSmall: '/assets/pong.png',
         url: '/pong',
         extra: '',
         id: 1
@@ -244,7 +251,8 @@ var games = [
         description: 'Game Description goes here',
         icon: '/assets/pong.png',
         iconAlt: '/assets/pong.png',
-        url: '/',
+        iconSmall: '/assets/empty.png',
+        url: '',
         extra: '',
         id: 2
     },
@@ -253,7 +261,8 @@ var games = [
         description: 'Game Description goes here',
         icon: '/assets/pong.png',
         iconAlt: '/assets/pong.png',
-        url: '/',
+        iconSmall: '/assets/empty.png',
+        url: '',
         extra: '',
         id: 3
     },
@@ -262,7 +271,8 @@ var games = [
         description: 'Game Description goes here',
         icon: '/assets/pong.png',
         iconAlt: '/assets/pong.png',
-        url: '/',
+        iconSmall: '/assets/empty.png',
+        url: '',
         extra: '',
         id: 4
     },
@@ -271,7 +281,8 @@ var games = [
         description: 'Game Description goes here',
         icon: '/assets/pong.png',
         iconAlt: '/assets/pong.png',
-        url: '/',
+        iconSmall: '/assets/empty.png',
+        url: '',
         extra: '',
         id: 5
     },
@@ -280,7 +291,8 @@ var games = [
         description: 'Game Description goes here',
         icon: '/assets/pong.png',
         iconAlt: '/assets/pong.png',
-        url: '/',
+        iconSmall: '/assets/empty.png',
+        url: '',
         extra: '',
         id: 6
     }

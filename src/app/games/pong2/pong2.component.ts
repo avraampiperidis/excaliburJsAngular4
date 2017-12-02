@@ -7,15 +7,15 @@ import { Paddle } from "./model/Paddle";
 import { delay } from "q";
 
 @Component({
-  templateUrl: 'pong.component.html',
-  styleUrls: ['pong.component.css']
+  templateUrl: 'pong2.component.html',
+  styleUrls: ['pong2.component.css']
 })
-export class PongComponent  implements OnInit {
+export class PongComponent2  implements OnInit {
 
-  title = 'My Pong Game!';
+  title = 'My Game!';
   game:ex.Engine;
   paddle:Paddle;
-  balls:Ball[] = [];
+  balls:Ball[];
   bricks:Brick[] = [];
   message:string;
 
@@ -29,6 +29,7 @@ export class PongComponent  implements OnInit {
   
 
   ngOnInit(): void {
+    this.balls = [];
     this.game = new ex.Engine({
       width: window.screen.width/1.5,
       height: window.screen.height/1.5
@@ -38,9 +39,15 @@ export class PongComponent  implements OnInit {
     this.addPaddle();
     this.setPaddleMovement();
     this.addBricks();
-    let ball = this.addBall();
-    ball.description = "a simple ball";
-    this.game.add(this.setBallEvents(ball));
+     for(let i =0; i < 20; i++){
+       let ball = this.addBall();
+       ball.description = "a simple ball";
+       this.balls.push(ball);
+     }
+    
+    this.game.add(this.setBallEvents(this.balls.pop()));
+    //let ball = this.addBall();
+    //this.setBallEvents(this.addBall());
   }
 
 
@@ -121,8 +128,31 @@ export class PongComponent  implements OnInit {
             // kill removes an actor from the current scene
             // therefore it will no longer be drawn or updated
             if(!event.other.isKilled()) {
-                event.other.kill();              
+                event.other.kill();
+                if(event.other.isKilled()) {
+                  if(this.balls.length > 0){
+                   
+                      this.game.add(this.setBallEvents(this.balls.pop()));
+                  }
+                }
             }
+
+            if(ball.vel.x > 0){
+               ball.vel.x += 15;
+            } else {
+               ball.vel.x -= 15;
+            }
+            if(ball.vel.y > 0){
+               ball.vel.y += 15;
+            } else {
+              ball.vel.y -=15;
+            }
+
+            //this.game.add(this.balls.pop());
+            // if(this.balls.length <= 5){
+            //   this.setBallEvents(this.addBall());
+            // }
+            
         }
         
         let intersection =event.intersection.normalize();
@@ -144,6 +174,8 @@ export class PongComponent  implements OnInit {
       return ball;
   }
 
+
+  
 
 
 

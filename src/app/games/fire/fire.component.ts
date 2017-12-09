@@ -22,6 +22,10 @@ export class FireComponent  implements OnInit {
     health:Health;
     message:string;
 
+    enemyTexture:ex.Texture = new ex.Texture('assets/enemy.png');
+    fighterTexture = new ex.Texture('assets/fighter.png');
+    loader:ex.Loader = new ex.Loader([this.enemyTexture,this.fighterTexture]);
+
     randomeAlienSpaceFrom:number = 550;
     randomeAlienSpaceTo:number = 1500;
     alienSpeedStar:number = 100;
@@ -34,14 +38,14 @@ export class FireComponent  implements OnInit {
     }
 
     ngOnInit(): void {
+        console.log(this.fighterTexture);
         this.game = new ex.Engine({
             width: window.screen.width/1.5,
             height: window.screen.height/1.5
         });
         this.game.backgroundColor = ex.Color.fromHex('06032c');
-
-        this.game.start();
-
+        this.game.start(this.loader);
+        
         this.addSpaceShip();
         this.setSpaceShipMovement();
         this.setHealthBar();
@@ -57,9 +61,10 @@ export class FireComponent  implements OnInit {
     }
 
     addSpaceShip() {
-        this.ship = new Ship(150,this.game.getDrawHeight()-40,30,40);
+        this.ship = new Ship(150,this.game.getDrawHeight()-40,40,40);
         this.ship.color = ex.Color.Red;
         this.ship.collisionType = ex.CollisionType.Fixed;
+        this.ship.addDrawing(this.fighterTexture);
         this.game.add(this.ship);
     }
 
@@ -83,10 +88,11 @@ export class FireComponent  implements OnInit {
                 this.randomeAlienSpaceTo = --this.randomeAlienSpaceTo - 40; 
             }
 
-            let alien = new Alien(this.getRandomeBetween(50,600),0,30,30);
+            let alien = new Alien(this.getRandomeBetween(50,600),0,40,40);
             alien.color = ex.Color.Orange;
             alien.vel.setTo(0,this.alienSpeedStar);
             alien.collisionType = ex.CollisionType.Active;
+            alien.addDrawing(this.enemyTexture);
             alien.on('collision',(event:any)=> {
                 if(event.other instanceof Shot) {                 
                     this.health.x -= 2;
@@ -106,7 +112,7 @@ export class FireComponent  implements OnInit {
     }
 
     shotFire(x:number) {
-        let shot = new Shot(x,this.game.getDrawHeight(),10,10);
+        let shot = new Shot(x,this.game.getDrawHeight(),5,5);
         shot.color = ex.Color.Red;
         shot.vel.setTo(0,-1000);
         shot.collisionType = ex.CollisionType.Passive;

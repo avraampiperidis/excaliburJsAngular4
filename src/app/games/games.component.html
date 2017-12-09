@@ -1,26 +1,26 @@
 <div>
-<md-grid-list cols="3" rowHeight="1:1">
+<mat-grid-list cols="3" rowHeight="1:1">
 
-  <md-grid-tile *ngFor="let game of myGames">
-    <md-card  class="example-card">
-      <md-card-header>
-        <div md-card-avatar class="example-header-image" [ngStyle]="{'background-image': 'url(' + game.iconSmall + ')'}"></div>
-        <md-card-title>{{game.title}}</md-card-title>
-        <md-card-subtitle>{{game.id}}</md-card-subtitle>
-      </md-card-header>
-      <img md-card-image src="{{game.icon}}" alt="Photo of a pong game">
-      <md-card-content>
+  <mat-grid-tile *ngFor="let game of myGames">
+    <mat-card  class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image" [ngStyle]="{'background-image': 'url(' + game.iconSmall + ')'}"></div>
+        <mat-card-title>{{game.title}}</mat-card-title>
+        <mat-card-subtitle>{{game.id}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{game.icon}}" alt="Photo of a pong game">
+      <mat-card-content>
         <p>
           {{game.description}}
         </p>
-      </md-card-content>
-      <md-card-actions>
-        <button md-button (click)="loadGame(game.url)">PLAY</button>
-      </md-card-actions>
-    </md-card>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="loadGame(game.url)">PLAY</button>
+      </mat-card-actions>
+    </mat-card>
 
-  </md-grid-tile>
-</md-grid-list>
+  </mat-grid-tile>
+</mat-grid-list>
 </div>
 
 

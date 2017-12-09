@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdButtonModule,MatDialogModule, MdCheckboxModule , MdCardModule , MdGridListModule, MdSnackBarModule } from '@angular/material';
+import {MatButtonModule,MatDialogModule, MatCheckboxModule , MatCardModule , MatGridListModule, MatSnackBarModule } from '@angular/material';
 
 //main components
 import { AppComponent } from './app.component';
@@ -51,10 +51,10 @@ const routes: Routes = [
      RouterModule,
      RouterModule.forRoot(routes),
      BrowserAnimationsModule,
-     MdButtonModule,
-    MdCheckboxModule,
-    MdCardModule,
-    MdGridListModule,
+     MatButtonModule,
+     MatCheckboxModule,
+     MatCardModule,
+     MatGridListModule,
     MatDialogModule,
   ],
   providers: [],

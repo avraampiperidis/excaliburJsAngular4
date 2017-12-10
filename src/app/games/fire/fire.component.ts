@@ -24,7 +24,11 @@ export class FireComponent  implements OnInit {
 
     enemyTexture:ex.Texture = new ex.Texture('assets/enemy.png');
     fighterTexture = new ex.Texture('assets/fighter.png');
-    loader:ex.Loader = new ex.Loader([this.enemyTexture,this.fighterTexture]);
+    birdTexture = new ex.Texture('assets/bird.png');
+    explodeSound = new ex.Sound('assets/explode.wav');
+    hitSound = new ex.Sound('assets/hit.wav');
+    colisionSound = new ex.Sound('assets/colision.wav');
+    loader:ex.Loader = new ex.Loader([this.enemyTexture,this.fighterTexture,this.birdTexture,this.explodeSound,this.hitSound,this.colisionSound]);
 
     randomeAlienSpaceFrom:number = 550;
     randomeAlienSpaceTo:number = 1500;
@@ -88,15 +92,26 @@ export class FireComponent  implements OnInit {
                 this.randomeAlienSpaceTo = --this.randomeAlienSpaceTo - 40; 
             }
 
+            
             let alien = new Alien(this.getRandomeBetween(50,600),0,40,40);
             alien.color = ex.Color.Orange;
             alien.vel.setTo(0,this.alienSpeedStar);
             alien.collisionType = ex.CollisionType.Active;
-            alien.addDrawing(this.enemyTexture);
+            if(this.getRandomeBetween(2,4) == 3) {
+                alien.addDrawing(this.birdTexture);
+            } else {
+                alien.addDrawing(this.enemyTexture);
+            }
             alien.on('collision',(event:any)=> {
                 if(event.other instanceof Shot) {                 
                     this.health.x -= 2;
+                    if(this.health.x < 30) {
+                        confirm("YOU WON!!! :)");
+                        this.goHome();
+                    }
+                    this.explodeSound.play();
                 } else if(event.other instanceof Ship) {
+                    this.colisionSound.play();
                     this.health.setWidth(this.health.getWidth()-10);
                     if(this.health.getWidth() <= 0) {
                         confirm("YOU LOST! :(");
@@ -117,6 +132,7 @@ export class FireComponent  implements OnInit {
         shot.vel.setTo(0,-1000);
         shot.collisionType = ex.CollisionType.Passive;
         this.game.add(shot);
+        this.hitSound.play();
     }
 
 
